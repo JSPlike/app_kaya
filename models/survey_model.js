@@ -1,0 +1,18 @@
+var Schema = mongoose.Schema;
+
+var surveySchema = new Schema({
+    Survey1: Number,
+    Survey2: Number,
+    Survey3: Number,
+    Survey4: Number,
+    Survey5: Number,
+    Survey6: Number,
+    Survey7: Number,
+    Survey8: Number,
+    Survey9: Number,
+    Survey10: Number,
+    Survey11: String,
+    Click_Time: { type: Date, default: Date.now  }
+});
+
+module.exports = mongoose.model('survey', surveySchema);
