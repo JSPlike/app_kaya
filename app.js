@@ -38,7 +38,7 @@ db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function(){
   console.log('Connected mongodb!!');
 });
-mongoose.connect('mongodb://localhost:27017/kaya', {useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connect(process.env.MONGODB_URI, {useNewUrlParser: true, useUnifiedTopology: true});
 
 
 
@@ -57,7 +57,7 @@ app.use(function(err, req, res, next) {
 
   // send the error page
   res.status(err.status || 500);
-  res.send('error');
+  res.send('error: ' + err.status);
 });
 
 module.exports = app;

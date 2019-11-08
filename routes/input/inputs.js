@@ -6,11 +6,24 @@ var InputA = require('../../models/input_model_A');
 var InputB = require('../../models/input_model_B');
 
 router.get('/getInput/:input_val', function(req, res, next){
-  fs.readFile(__dirname + "/../../data/input.json", 'utf8', function(err, data){
-    var inputs = JSON.parse(data);
-    res.json(inputs[req.params.input_val]);
-  });
+
+  if(input_val === 'A'){
+    InputA.find(function(err, inputs){
+      if(err) return res.status(500).send({error: 'database failure'});
+      res.json({inputs});
+    });
+  }
+  else {
+    InputB.find(function(err, inputs){
+      if(err) return res.status(500).send({error: 'database failure'});
+      res.json({inputs});
+    });
+  }
 });
+
+
+//    /addInput/A
+//    /addInput/B
 
 router.post('/addInput/:type', function(req, res, next){
   var result_check = {};
