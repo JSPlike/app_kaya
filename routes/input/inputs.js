@@ -10,13 +10,13 @@ router.get('/getInput/:input_val', function(req, res, next){
   if(input_val === 'A'){
     InputA.find(function(err, inputs){
       if(err) return res.status(500).send({error: 'database failure'});
-      res.json({inputs});
+      res.json(inputs);
     });
   }
   else {
     InputB.find(function(err, inputs){
       if(err) return res.status(500).send({error: 'database failure'});
-      res.json({inputs});
+      res.json(inputs);
     });
   }
 });
