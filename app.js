@@ -25,12 +25,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-app.use('/api', index);
-app.use('/api', users);
-app.use('/api', inputs);
-//app.use('/api', survey);
-
-
 //[MONGO CONNECTION]
 
 var db = mongoose.connection;
@@ -40,7 +34,10 @@ db.once('open', function(){
 });
 mongoose.connect(process.env.MONGODB_URI, {useNewUrlParser: true, useUnifiedTopology: true});
 
-
+app.use('/api', index);
+app.use('/api', users);
+app.use('/api', inputs);
+//app.use('/api', survey);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
