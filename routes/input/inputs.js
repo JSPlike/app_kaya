@@ -5,22 +5,21 @@ var mongoose = require('mongoose');
 var InputA = require('../../models/input_model_A');
 var InputB = require('../../models/input_model_B');
 
-router.get('/getInput/:input_val', function(req, res, next){
-
+router.get('/getInput/:type', function(req, res, next){
 
   // type is version A or version B
-  var type = req.params.input_val;
+  var type = req.params.type;
 
-  if(type === 'A'){
-    InputA.find(function(err, inputs){
+  if(type === "A"){
+    InputA.find(function(err, inputas){
       if(err) return res.status(500).send({error: 'database failure'});
       res.json(inputs);
     });
   }
-  else if(type === 'B'){
-    InputB.find(function(err, inputs){
+  else if(type === "B"){
+    InputB.find(function(err, inputbs){
       if(err) return res.status(500).send({error: 'database failure'});
-      res.json(inputs);
+      res.json(inputbs);
     });
   }
 });
