@@ -13,7 +13,7 @@ router.get('/getInput/:type', function(req, res, next){
   if(type === "A"){
     InputA.find(function(err, inputas){
       if(err) return res.status(500).send({error: 'database failure'});
-      res.json(inputs);
+      res.json(inputas);
     });
   }
   else if(type === "B"){
