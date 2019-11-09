@@ -7,13 +7,17 @@ var InputB = require('../../models/input_model_B');
 
 router.get('/getInput/:input_val', function(req, res, next){
 
-  if(input_val === 'A'){
+
+  // type is version A or version B
+  var type = req.params.input_val;
+
+  if(type === 'A'){
     InputA.find(function(err, inputs){
       if(err) return res.status(500).send({error: 'database failure'});
       res.json(inputs);
     });
   }
-  else {
+  else if(type === 'B'){
     InputB.find(function(err, inputs){
       if(err) return res.status(500).send({error: 'database failure'});
       res.json(inputs);
