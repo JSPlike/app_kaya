@@ -7,7 +7,9 @@ router.get('/consent', function(req, res, next) {
   var count = 1;
   var random_id = i_d + count;
 
-  console.log(random_id);
+  return res.json({
+    code: i_d
+  });
 });
 
 module.exports = router;
