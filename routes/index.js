@@ -16,7 +16,6 @@ router.get('/consent', function(req, res, next) {
     //Math.random => 0~1 random float num
     var n = Math.floor(Math.random() * random_base_char.length);
     temp_1 += random_base_char[n];
-    console.log(temp_1);
   }
   // num length = 5
   for(var j = 0; j < 5; j++){
@@ -30,16 +29,15 @@ router.get('/consent', function(req, res, next) {
   realUser.UserCode = user_code;
   realUser.save();
 
-  var userNum = new Usercount();
-
-  userNum.find({}, function(err, data){
-    if(err) return console.log("data find err", err);
-    data.AgreeUser++;
-    data.save(function(err){
-      if(err) return console.log('AgreeUser save err', err);
-      console.log('Success success User Count!!');
-    });
-  });
+  // var userNum = new Usercount();
+  // userNum.find({}, function(err, data){
+  //   if(err) return console.log("data find err", err);
+  //   data.AgreeUser++;
+  //   data.save(function(err){
+  //     if(err) return console.log('AgreeUser save err', err);
+  //     console.log('Success success User Count!!');
+  //   });
+  // });
 
   return res.json({
     code: user_code
