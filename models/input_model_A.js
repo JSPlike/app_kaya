@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var inputSchema = new Schema({
-    OPT_Test: Number,
+    OPKTest: Number,
     Flow: Number,
     Sex: String,
     Temperature: Number,

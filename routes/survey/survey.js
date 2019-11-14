@@ -3,7 +3,7 @@ var router = express.Router();
 var fs = require('fs');
 
 
-router.post('/addSurvey/:survey_val', function(req, res, next){
+router.post('/addSurvey/:type', function(req, res, next){
   var result_check = {};
 
   // this is the ID value for input_value

@@ -7,9 +7,15 @@ router.get('/consent', function(req, res, next) {
   var count = 1;
   var random_id = i_d + count;
 
+  var random_base = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  
   return res.json({
     code: i_d
   });
+});
+
+router.get('/reject', function(req, res, next){
+
 });
 
 module.exports = router;

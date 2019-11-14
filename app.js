@@ -4,9 +4,14 @@ var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
+var app = express();
+var cors = require('cors');
 var bodyParser = require('body-parser');
 var morgan = require('morgan');
 var fs = require('fs');
+
+app.use(cors());
+
 var index = require('./routes/index');
 var users = require('./routes/users');
 var inputs = require('./routes/input/inputs');
@@ -15,7 +20,7 @@ var mongoose = require('mongoose');
 
 //models
 
-var app = express();
+
 
 app.use(morgan('short'));
 // uncomment after placing your favicon in /public
