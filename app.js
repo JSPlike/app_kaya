@@ -10,7 +10,11 @@ var bodyParser = require('body-parser');
 var morgan = require('morgan');
 var fs = require('fs');
 
-app.use(cors());
+const origin = {
+  origin: '*'
+};
+
+app.use(cors(origin));
 
 var index = require('./routes/index');
 var users = require('./routes/users');
