@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
-var Usercode = require('../../models/user_code');
-var Usercount = requre('../../models/user_count');
+var Usercode = require('../models/user_code');
+var Usercount = requre('../models/user_count');
 
 /* GET home page. */
 router.get('/consent', function(req, res, next) {
