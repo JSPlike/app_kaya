@@ -1,6 +1,9 @@
+var mongoose = require('mongoose');
+
 var Schema = mongoose.Schema;
 
 var surveySchema = new Schema({
+    CheckCode: {type: String, ref: 'user_code'},
     Survey1: Number,
     Survey2: Number,
     Survey3: Number,
@@ -15,4 +18,4 @@ var surveySchema = new Schema({
     Click_Time: { type: Date, default: Date.now  }
 });
 
-module.exports = mongoose.model('survey', surveySchema);
+module.exports = mongoose.model('surveyB', surveySchema);

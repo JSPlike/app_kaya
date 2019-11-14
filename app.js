@@ -10,7 +10,7 @@ var bodyParser = require('body-parser');
 var morgan = require('morgan');
 var fs = require('fs');
 
-const origin = {
+var origin = {
   origin: '*'
 };
 

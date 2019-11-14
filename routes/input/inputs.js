@@ -30,7 +30,7 @@ router.get('/getInput/:type', function(req, res, next){
 
 router.post('/addInput/:type', function(req, res, next){
   var result_check = {};
-
+  var checkCode = req.body.CheckCode;
   var opkTest = req.body.OPKTest;
   var flow = req.body.Flow;
   var sex = req.body.Sex;
@@ -44,6 +44,7 @@ router.post('/addInput/:type', function(req, res, next){
 
   if(type === "A"){
     var inputA = new InputA();
+    inputA.CheckCode = checkCode;
     inputA.OPKTest = opkTest;
     inputA.Flow = flow;
     inputA.Sex = sex;
@@ -55,6 +56,7 @@ router.post('/addInput/:type', function(req, res, next){
   }
   else if (type === "B") {
     var inputB = new InputB();
+    inputB.CheckCode = checkCode;
     inputB.OPKTest = opkTest;
     inputB.Flow = flow;
     inputB.Sex = sex;

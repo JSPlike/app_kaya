@@ -2,6 +2,7 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var inputSchema = new Schema({
+    CheckCode: {type: String, ref: 'user_code'},
     OPKTest: Number,
     Flow: Number,
     Sex: String,
