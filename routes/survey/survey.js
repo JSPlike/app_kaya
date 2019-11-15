@@ -54,3 +54,5 @@ router.post('/addSurvey/:type', function(req, res, next){
 
   res.json({result_check: "Success"});
 });
+
+module.exports = router;
