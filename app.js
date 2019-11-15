@@ -20,6 +20,7 @@ var index = require('./routes/index');
 var users = require('./routes/users');
 var inputs = require('./routes/input/inputs');
 var survey = require('./routes/survey/survey');
+
 var mongoose = require('mongoose');
 
 //models
@@ -46,6 +47,7 @@ mongoose.connect(process.env.MONGODB_URI, {useNewUrlParser: true, useUnifiedTopo
 app.use('/api', index);
 app.use('/api', users);
 app.use('/api', inputs);
+app.use('/api', survey);
 //app.use('/api', survey);
 
 // catch 404 and forward to error handler

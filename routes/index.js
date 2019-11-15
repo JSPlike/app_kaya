@@ -19,12 +19,14 @@ router.get('/consent', function(req, res, next) {
     var n = Math.floor(Math.random() * random_base_char.length);
     temp_1 += random_base_char[n];
   }
+  console.log(tmep_1);
 
   // num length = 5
   for(var j = 0; j < 5; j++){
     var m = Math.floor(Math.random() * random_base_num.length);
     temp_2 += random_base_num[m];
   }
+  console.log(temp_2);
 
   var user_code = temp_1.concat(temp_2);
   var realUser = new Usercode();
