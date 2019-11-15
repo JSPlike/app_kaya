@@ -3,7 +3,6 @@ var router = express.Router();
 
 var mongoose = require('mongoose');
 var Usercode = require('../models/user_code');
-var Usercount = require('../models/user_count');
 
 /* GET home page. */
 router.get('/consent', function(req, res, next) {
@@ -29,8 +28,6 @@ router.get('/consent', function(req, res, next) {
 
   var resultCode = temp_1.concat(temp_2);
 
-
-
   var realUser = new Usercode();
   realUser.UserCode = resultCode;
 
@@ -38,33 +35,22 @@ router.get('/consent', function(req, res, next) {
     if(err) return console.error(err);
   });
 
-
-  var userNum = new Usercount();
-  userNum.find(function(err, data){
-    if(err) return console.log("data find err", err);
-    data.AgreeUser++;
-    data.save(function(err){
-      if(err) return console.log('AgreeUser save err', err);
-      console.log('Success success User Count!!');
-    });
-  });
-
   return res.json({
     "message": resultCode
   });
+
 });
 
 router.get('/reject', function(req, res, next){
-  var userNum = new Usercount();
+  var realUser = new Usercode();
+  realUser.UserCode = "No_User";
 
-  userNum.find(function(err, data){
-    if(err) return console.log("data find err", err);
-
-    data.RejectUser++;
-    data.save(function(err){
-      if(err) return console.log('RejectUser save err', err);
-      console.log('Success reject User Count!!');
-    });
+  realUser.save(function(err, code){
+    if(err) return console.error(err);
+  });
+  
+  res.json({
+    "message": "Succsess this is NO user"
   });
 });
 
