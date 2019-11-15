@@ -29,33 +29,35 @@ router.get('/consent', function(req, res, next) {
 
   var resultCode = temp_1.concat(temp_2);
 
+
+
+  var realUser = new Usercode();
+  realUser.UserCode = resultCode;
+
+  realUser.save(function(err, code){
+    if(err) return console.error(err);
+  });
+
+
+  var userNum = new Usercount();
+  userNum.find(function(err, data){
+    if(err) return console.log("data find err", err);
+    data.AgreeUser++;
+    data.save(function(err){
+      if(err) return console.log('AgreeUser save err', err);
+      console.log('Success success User Count!!');
+    });
+  });
+
   return res.json({
     "message": resultCode
   });
-
-  // var realUser = new Usercode();
-  // realUser.UserCode = resultCode;
-  //
-  // realUser.save(function(err, code){
-  //   if(err) return console.error(err);
-  // });
-
-
-  // var userNum = new Usercount();
-  // userNum.find(function(err, data){
-  //   if(err) return console.log("data find err", err);
-  //   data.AgreeUser++;
-  //   data.save(function(err){
-  //     if(err) return console.log('AgreeUser save err', err);
-  //     console.log('Success success User Count!!');
-  //   });
-  // });
 });
 
 router.get('/reject', function(req, res, next){
   var userNum = new Usercount();
 
-  userNum.find({}, function(err, data){
+  userNum.find(function(err, data){
     if(err) return console.log("data find err", err);
 
     data.RejectUser++;
