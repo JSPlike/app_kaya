@@ -29,7 +29,9 @@ router.get('/consent', function(req, res, next) {
 
   var resultCode = temp_1.concat(temp_2);
 
-  res.send(resultCode);
+  return res.json({
+    "message": resultCode
+  });
 
   // var realUser = new Usercode();
   // realUser.UserCode = resultCode;
@@ -37,8 +39,6 @@ router.get('/consent', function(req, res, next) {
   // realUser.save(function(err, code){
   //   if(err) return console.error(err);
   // });
-
-  //res.json({ code: resultCode });
 
 
   // var userNum = new Usercount();
