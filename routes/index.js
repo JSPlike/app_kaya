@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var mongoose = require('mongoose');
 var Usercode = require('../models/user_code');
 var Usercount = require('../models/user_count');
 
@@ -11,12 +12,14 @@ router.get('/consent', function(req, res, next) {
 
   var temp_1 = '';
   var temp_2 = '';
+
   // char length = 4
   for(var i = 0; i < 4; i++) {
     //Math.random => 0~1 random float num
     var n = Math.floor(Math.random() * random_base_char.length);
     temp_1 += random_base_char[n];
   }
+
   // num length = 5
   for(var j = 0; j < 5; j++){
     var m = Math.floor(Math.random() * random_base_num.length);
@@ -24,7 +27,6 @@ router.get('/consent', function(req, res, next) {
   }
 
   var user_code = temp_1.concat(temp_2);
-
   var realUser = new Usercode();
   realUser.UserCode = user_code;
   realUser.save();
