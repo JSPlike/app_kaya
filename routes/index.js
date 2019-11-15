@@ -28,13 +28,21 @@ router.get('/consent', function(req, res, next) {
   }
   console.log(temp_2);
 
-  var user_code = temp_1.concat(temp_2);
+  var resultCode = temp_1.concat(temp_2);
+
   var realUser = new Usercode();
-  realUser.UserCode = user_code;
-  realUser.save();
+  realUser.UserCode = resultCode;
+
+  realUser.save(function(err, code){
+    if(err) return console.log(err);
+    res.json({code: code.UserCode});
+  });
+
+  //res.json({ code: resultCode });
+
 
   // var userNum = new Usercount();
-  // userNum.find({}, function(err, data){
+  // userNum.find(function(err, data){
   //   if(err) return console.log("data find err", err);
   //   data.AgreeUser++;
   //   data.save(function(err){
@@ -43,9 +51,7 @@ router.get('/consent', function(req, res, next) {
   //   });
   // });
 
-  res.json({
-    code: user_code
-  });
+
 });
 
 router.get('/reject', function(req, res, next){
