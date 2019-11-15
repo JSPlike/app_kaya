@@ -43,7 +43,7 @@ router.get('/consent', function(req, res, next) {
   //   });
   // });
 
-  return res.json({
+  res.json({
     code: user_code
   });
 });

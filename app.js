@@ -4,6 +4,7 @@ var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
+
 var app = express();
 var cors = require('cors');
 var bodyParser = require('body-parser');
@@ -48,7 +49,6 @@ app.use('/api', index);
 app.use('/api', users);
 app.use('/api', inputs);
 app.use('/api', survey);
-//app.use('/api', survey);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
