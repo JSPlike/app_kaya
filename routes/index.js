@@ -26,10 +26,17 @@ router.get('/consent', function(req, res, next) {
     temp_2 += random_base_num.substring(m, m + 1);
   }
 
+  var user_type = req.body.userId;
+  //if the user is real user,
+  //one random code will be save in database;
+  if(user_type == 'A') user_type = 'AB';
+  else user_type = 'BA';
+
   var resultCode = temp_1.concat(temp_2);
 
   var realUser = new Usercode();
   realUser.UserCode = resultCode;
+  realUser.UserType = user_type;
 
   realUser.save(function(err, code){
     if(err) return console.error(err);
@@ -42,13 +49,16 @@ router.get('/consent', function(req, res, next) {
 });
 
 router.get('/reject', function(req, res, next){
+
+  //if the user is not real user,
+  // "No_user" string will be save to database
   var realUser = new Usercode();
   realUser.UserCode = "No_User";
 
   realUser.save(function(err, code){
     if(err) return console.error(err);
   });
-  
+
   res.json({
     "message": "Succsess this is NO user"
   });
