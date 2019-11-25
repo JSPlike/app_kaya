@@ -4,9 +4,11 @@ var router = express.Router();
 var mongoose = require('mongoose');
 var Usercode = require('../models/user_code');
 var ran = require('../lib/randomUser');
-var typeNum = requir('../lib/typeNum');
+var typeNum = require('../lib/typeNum');
 
 /* GET home page. */
+
+//this is creating random users
 router.get('/consent1', function(req, res, next) {
 
   //reading usertype
@@ -16,6 +18,7 @@ router.get('/consent1', function(req, res, next) {
   if(user_type == 'A') user_type = 'AB';
   else user_type = 'BA';
 
+  //creating userid
   var user = ran.random_user();
 
   //mongDB SAVE
@@ -32,11 +35,13 @@ router.get('/consent1', function(req, res, next) {
     "message": user
   });
 });
-
+//this is creating users after count user’s number
 router.get('/consent2', function(req, res, next){
   var realUser = new Usercode();
   var a = typeNum.ANum;
   var b = typeNum.BNum;
+  
+  //creating userid
   var user = ran.random_user();
   var type;
 
