@@ -11,6 +11,27 @@ var typeNum = require('../lib/typeNum');
 //this is creating random users
 router.get('/consent1', function(req, res, next) {
 
+  var random_base_char = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+  var random_base_num = "0123456789";
+
+  var temp_1 = '';
+  var temp_2 = '';
+
+  // char length = 4
+  for(var i = 0; i < 4; i++) {
+    //Math.random => 0~1 random float num
+    var n = Math.floor(Math.random() * random_base_char.length);
+    temp_1 += random_base_char.substring(n, n + 1);
+  }
+
+  // num length = 5
+  for(var j = 0; j < 5; j++){
+    var m = Math.floor(Math.random() * random_base_num.length);
+    temp_2 += random_base_num.substring(m, m + 1);
+  }
+
+  var resultCode = temp_1.concat(temp_2);
+  var user = random_user();
   //reading usertype
   var user_type = req.body.userId;
   //if the user is real user,
@@ -19,7 +40,7 @@ router.get('/consent1', function(req, res, next) {
   else user_type = 'BA';
 
   //creating userid
-  var user = ran.random_user();
+  //var user = ran.random_user();
 
   //mongDB SAVE
   var realUser = new Usercode();
@@ -32,7 +53,9 @@ router.get('/consent1', function(req, res, next) {
 
   //send message to front
   return res.json({
-    "message": user
+    "usercode": user,
+    "usertype": user_type
+
   });
 });
 //this is creating users after count user’s number
@@ -40,7 +63,7 @@ router.get('/consent2', function(req, res, next){
   var realUser = new Usercode();
   var a = typeNum.ANum;
   var b = typeNum.BNum;
-  
+
   //creating userid
   var user = ran.random_user();
   var type;
