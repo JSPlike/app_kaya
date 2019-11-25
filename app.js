@@ -38,6 +38,8 @@ app.use(cookieParser());
 
 //[MONGO CONNECTION]
 
+//We have to change this part to your information
+
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function(){
