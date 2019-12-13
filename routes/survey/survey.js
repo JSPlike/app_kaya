@@ -3,11 +3,14 @@ var router = express.Router();
 
 var fs = require('fs');
 
-const controlSurveyJson = require('../../data/survey_experiment.json');
+const controlSurveyJson = require('../../data/survey_control.json');
+const experimentSurveyJson = require('../../data/survey_experiment.json');
 
 router.get('/requestSurvey/control', function(req, res, next){
-
   res.json(controlSurveyJson);
+});
+router.get('/requestSurvey/experiment', function(req, res, next){
+  res.json(experimentSurveyJson);
 });
 
 
