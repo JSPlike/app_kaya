@@ -1,19 +1,15 @@
 var express = require('express');
 var router = express.Router();
-var dbd = require('../../data/db');
 
 var fs = require('fs');
 
-router.post('/requestSurvey/control', async function(req, res, next){
+router.get('/requestSurvey/control', function(req, res, next){
 
   const result = {success: true}
-  try {
-    const json = await dbd.getData()
-  } catch (err) {
-    result.success = false
-    result.err = err
-  }
-    res.json(json)
+  const path = '../../data/survey_experiment.json';
+  const jsonVal = fs.readFileSync(path);
+
+  return res.json(jsonVal);
 });
 
 
