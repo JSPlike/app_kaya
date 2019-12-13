@@ -72,9 +72,8 @@ router.get('/consent1', function(req, res, next) {
 });
 
 //this is creating users after count user’s number
-router.get('/consent2', function(req, res, next){
+router.get('/consent2', async (req, res, next) => {
   var realUser = new Usercode();
-
 
   const ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
   //creating userid
@@ -103,28 +102,28 @@ router.get('/consent2', function(req, res, next){
   var resultCode = temp_1.concat(temp_2);
 
   var user = resultCode;
-  var type = '';
-  // count user (type is 'AB' or 'BA')
+
+  const abCount = await Usercode.countDocuments({UserType: 'AB'})
+                  .catch(err => { throw err });
+
+  const baCount = await Usercode.countDocuments({UserType: 'BA'})
+                  .catch(err => { throw err });
+
+
+
+
+
+  console.log(abCount);
+  console.log(baCount);
+                  
+  const type = abCount <= baCount ? 'AB' : 'BA';
+
+  realUser.UserCode = user;
+  realUser.UserType = type;
+  realUser.IPaddress = ip;
 
   realUser.save(function(err, code){
     if(err) return console.error(err);
-
-    Usercode.countDocuments({UserType: 'AB'}, function(err, acnt){
-      if(err) throw err;
-      if(acnt === 0) acnt = 0;
-
-      Usercode.countDocuments({UserType: 'BA'}, function(err, bcnt){
-        if(err) throw err;
-        if(bcnt === 0) bcnt = 0;
-
-        type = acnt <= bcnt ? 'AB' : 'BA';
-
-        realUser.UserCode = user;
-        realUser.UserType = type;
-        realUser.IPaddress = ip;
-      });
-    });
-    
   });
 
 
