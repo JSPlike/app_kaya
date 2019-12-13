@@ -6,6 +6,7 @@ var fs = require('fs');
 const controlSurveyJson = require('../../data/survey_control.json');
 const experimentSurveyJson = require('../../data/survey_experiment.json');
 
+// data folder / jsonfile  => frontend
 router.get('/requestSurvey/control', function(req, res, next){
   res.json(controlSurveyJson);
 });
@@ -13,6 +14,8 @@ router.get('/requestSurvey/experiment', function(req, res, next){
   res.json(experimentSurveyJson);
 });
 
+
+/* -------save survey------- */
 
 // common survey
 var SurveyCommon = require('../../models/survey_model_common');
@@ -27,14 +30,20 @@ var SurveyFinal = require('../../models/survey_model_final');
 router.post('/addSurvey/common', function(req, res, next){
   var checkCode = req.body.CheckCode;
   var answer = req.body.Answer;
+
+  // json file !
   answer = JSON.stringify(answer);
 
+  // load schema
   var surveyCommon = new SurveyCommon();
 
   surveyCommon.CheckCode = checkCode;
   surveyCommon.Answer = answer;
 
+  // save database
   surveyCommon.save();
+
+  // result value
   res.json({"result_check": "Success"});
 });
 //experiment

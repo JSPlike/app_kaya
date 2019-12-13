@@ -5,6 +5,9 @@ var mongoose = require('mongoose');
 var InputA = require('../../models/input_model_A');
 var InputB = require('../../models/input_model_B');
 
+
+// Just for test
+// this code is not important
 router.get('/getInput/:type', function(req, res, next){
 
   // type is version A or version B
@@ -23,6 +26,7 @@ router.get('/getInput/:type', function(req, res, next){
     });
   }
 });
+
 //    /addInput/A
 //    /addInput/B
 router.post('/addInput/:type', function(req, res, next){

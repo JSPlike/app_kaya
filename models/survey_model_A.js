@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-// survey schema
+// survey schema (control)
 var surveySchema = new Schema({
     CheckCode: {type: String, ref: 'user_code'},
     Answer: {
