@@ -11,12 +11,16 @@ var bodyParser = require('body-parser');
 var morgan = require('morgan');
 var fs = require('fs');
 
+
+// CORS
+// Middle ware Cross-Origin Resource Sharing
+// Allow HTTP access from outside
 var origin = {
   origin: '*'
 };
-
 app.use(cors(origin));
 
+// Router part
 var index = require('./routes/index');
 var users = require('./routes/users');
 var inputs = require('./routes/input/inputs');
@@ -47,6 +51,8 @@ db.once('open', function(){
 //process.env.MONGODB_URI ( need to change )
 mongoose.connect(process.env.MONGODB_URI, {useNewUrlParser: true, useUnifiedTopology: true});
 
+
+//  url : /api/xxxxx
 app.use('/api', index);
 app.use('/api', users);
 app.use('/api', inputs);

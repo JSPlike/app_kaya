@@ -27,6 +27,8 @@ router.get('/getInput/:type', function(req, res, next){
 //    /addInput/B
 
 router.post('/addInput/:type', function(req, res, next){
+
+  //initialize
   var result_check = {};
   var checkCode = req.body.CheckCode;
   var opkTest = req.body.OPKTest;
@@ -40,6 +42,7 @@ router.post('/addInput/:type', function(req, res, next){
   var type = req.params.type;
   console.log(type);
 
+  // if type is "A"
   if(type === "A"){
     var inputA = new InputA();
     inputA.CheckCode = checkCode;
@@ -52,6 +55,7 @@ router.post('/addInput/:type', function(req, res, next){
     inputA.Moods = moods;
     inputA.save();
   }
+  // if type is "B"
   else if (type === "B") {
     var inputB = new InputB();
     inputB.CheckCode = checkCode;

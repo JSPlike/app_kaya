@@ -31,7 +31,8 @@ router.get('/consent1', function(req, res, next) {
   }
 
   var resultCode = temp_1.concat(temp_2);
-  var user = ran.random_user();
+
+  var user = resultCode;
   //reading usertype
 
   var user_type = req.body.userId;
