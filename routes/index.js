@@ -111,14 +111,14 @@ router.get('/consent2', function(req, res, next){
   var a;
   var b;
 
-  a = Usercode.countDocuments({UserType: 'AB'}, function(err, count){
+  Usercode.countDocuments({UserType: 'AB'}, function(err, count){
     if(err) console.log(error);
-    return count;
+    a = count;
   });
 
-  b = Usercode.countDocuments({UserType: 'BA'}, function(err, count){
+  Usercode.countDocuments({UserType: 'BA'}, function(err, count){
     if(err) console.log(error);
-    return count;
+    b = count;
   });
 
   console.log(a);
