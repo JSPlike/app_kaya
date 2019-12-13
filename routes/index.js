@@ -7,8 +7,6 @@ var Usercode = require('../models/user_code');
 
 /* GET home page. */
 
-
-
 //this is creating random users
 router.get('/consent1', function(req, res, next) {
 

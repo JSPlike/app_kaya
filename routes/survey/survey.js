@@ -19,7 +19,7 @@ router.get('/requestSurvey/control', function(req, res, next){
 
 
 // common survey
-var SurveyCommon = require('../../models/survey_model_commot');
+var SurveyCommon = require('../../models/survey_model_common');
 // experiment survey
 var SurveyA = require('../../models/survey_model_A');
 // control survey
