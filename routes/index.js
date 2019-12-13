@@ -106,22 +106,22 @@ router.get('/consent2', function(req, res, next){
   var type = '';
   // count user (type is 'AB' or 'BA')
   var a = function cntType(cb){
-    Usercode.countDocuments({UserType: 'AB'}, function(err, count){
+    Usercode.countDocuments({UserType: 'AB'}, function(err, aaa){
       if(err) throw err;
       if(count === 0) return cb(null, true);
 
-      return cb(`AB type's number is ${count}`, false);
+      return count;
     });
-  }
+  };
 
   var b = function cntType(cb){
     Usercode.countDocuments({UserType: 'BA'}, function(err, count){
       if(err) console.log(error);
       if(count === 0) return cb(null, true);
 
-      return cb(`BA type's number is ${count}`, false);
+      return count;
     });
-  }
+  };
 
   console.log(a);
   console.log(typeof(b));
