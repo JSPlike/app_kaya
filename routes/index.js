@@ -115,11 +115,12 @@ router.get('/consent2', function(req, res, next){
 
   var b = Usercode.countDocuments({UserType: 'BA'}, function(err, count){
     if(err) console.log(error);
+
     return count;
   });
 
-  console.log(a);
-  console.log(b);
+  console.log(typeof(a));
+  console.log(typeof(b));
 
   if(a <= b){
     type = 'AB';
