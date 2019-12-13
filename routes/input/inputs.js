@@ -25,7 +25,6 @@ router.get('/getInput/:type', function(req, res, next){
 });
 //    /addInput/A
 //    /addInput/B
-
 router.post('/addInput/:type', function(req, res, next){
 
   //initialize

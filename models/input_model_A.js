@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
+// input schema
 var inputSchema = new Schema({
     CheckCode: {type: String, ref: 'user_code'},
     OPKTest: Number,

@@ -103,21 +103,27 @@ router.get('/consent2', async (req, res, next) => {
 
   var user = resultCode;
 
+  // counting type AB;
   const abCount = await Usercode.countDocuments({UserType: 'AB'})
                   .catch(err => { throw err });
 
+
+  // counting type BA;
   const baCount = await Usercode.countDocuments({UserType: 'BA'})
                   .catch(err => { throw err });
+
 
   console.log("AB Count:", abCount);
   console.log("BA Count:", baCount);
 
+  // compare num(AB) and num(BA)
   const type = abCount <= baCount ? 'AB' : 'BA';
 
   realUser.UserCode = user;
   realUser.UserType = type;
   realUser.IPaddress = ip;
 
+  // save
   await realUser.save().catch(err => {
     console.error(err);
     throw err;
@@ -129,7 +135,6 @@ router.get('/consent2', async (req, res, next) => {
     "IPaddress": ip
   });
 });
-
 
 router.get('/reject', function(req, res, next){
 
