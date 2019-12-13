@@ -108,18 +108,23 @@ router.get('/consent2', function(req, res, next){
   // count user (type is 'AB' or 'BA')
 
 
-  var a = Usercode.countDocuments({UserType: 'AB'}, function(err, count){
-    if(err) console.log(error);
-    return count;
-  });
+  var a = function aNum(){
+    Usercode.countDocuments({UserType: 'AB'}, function(err, count){
+      if(err) console.log(error);
 
-  var b = Usercode.countDocuments({UserType: 'BA'}, function(err, count){
-    if(err) console.log(error);
+      return count;
+    });
+  };
 
-    return count;
-  });
+  var b = function bNum(){
+    Usercode.countDocuments({UserType: 'BA'}, function(err, count){
+      if(err) console.log(error);
 
-  console.log(typeof(a));
+      return count;
+    });
+  };
+
+  console.log(a);
   console.log(typeof(b));
 
   if(a <= b){
