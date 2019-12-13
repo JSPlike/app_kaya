@@ -4,6 +4,7 @@ var Schema = mongoose.Schema;
 var userSchema = new Schema({
   UserCode: String,
   UserType: String,
+  IPaddress: String,
   Click_Time: { type: Date, default: Date.now  }
 });
 

@@ -57,6 +57,7 @@ router.get('/consent1', function(req, res, next) {
   var realUser = new Usercode();
   realUser.UserCode = user;
   realUser.UserType = user_type;
+  realUser.IPaddress = ip;
 
   realUser.save(function(err, code){
     if(err) return console.error(err);
@@ -65,7 +66,8 @@ router.get('/consent1', function(req, res, next) {
   //send message to front
   return res.json({
     "usercode": user,
-    "usertype": user_type
+    "usertype": user_type,
+    "IP_Address": ip
   });
 });
 
@@ -104,22 +106,24 @@ router.get('/consent2', function(req, res, next){
 
   // count user (type is 'AB' or 'BA')
 
-  var aNum = Usercode.find({UserType: 'AB'}.count(), function(err, user){
+  var aNum = Usercode.countDocuments({ UserType: 'AB' }, function(err, count){
     if(err) console.log(error);
     else {
       if(user == [] || user == null || user == undefined || user == {} || user == '[]') aNum = 0;}
+
+    console.log(count);
     });
 
-  var bNum = Usercode.find({UserType: 'BA'}.count(), function(err, user){
+  var bNum = Usercode.countDocuments({ UserType: 'BA' }, function(err, count){
     if(err) console.log(error);
     else {
       if(user == [] || user == null || user == undefined || user == {} || user == '[]')bNum = 0;}
+
+    console.log(count);
   });
 
   var a = aNum;
   var b = bNum;
-  console.log(a);
-  console.log(b);
 
   if(a <= b){
     type = 'AB';
