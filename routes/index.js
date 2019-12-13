@@ -60,6 +60,7 @@ router.get('/consent1', function(req, res, next) {
   realUser.UserCode = user;
   realUser.UserType = user_type;
   realUser.IPaddress = ip;
+  realUser.Enviroment = device;
 
   realUser.save(function(err, code){
     if(err) return console.error(err);
@@ -78,6 +79,12 @@ router.get('/consent1', function(req, res, next) {
 router.get('/consent2', async (req, res, next) => {
   var realUser = new Usercode();
 
+  //checking Device
+  var device;
+  if(req.useragent.isMobile) device = 'Mobile';
+  else device = 'Desktop'
+
+  //cliend IP
   const ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
   //creating userid
 
@@ -125,7 +132,7 @@ router.get('/consent2', async (req, res, next) => {
   realUser.UserCode = user;
   realUser.UserType = type;
   realUser.IPaddress = ip;
-
+  realUser.Enviroment = deveice;
   // save
   await realUser.save().catch(err => {
     console.error(err);
@@ -135,7 +142,8 @@ router.get('/consent2', async (req, res, next) => {
   return res.json({
     "usercode": user,
     "usertype": type,
-    "IPaddress": ip
+    "IPaddress": ip,
+    "enviroment": device
   });
 });
 

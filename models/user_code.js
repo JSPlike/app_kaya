@@ -7,6 +7,7 @@ var userSchema = new Schema({
   UserCode: String,
   UserType: String,
   IPaddress: String,
+  Enviroment: String,
   Click_Time: { type: Date, default: Date.now  }
 });
 
