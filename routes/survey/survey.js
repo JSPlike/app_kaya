@@ -8,7 +8,8 @@ router.get('/requestSurvey/control', function(req, res, next){
   const result = {success: true}
   const path = '../../data/survey_experiment.json';
   const jsonVal = fs.readFileSync(path);
-
+  jsonVal = JSON.stringify(jsonVal);
+  
   return res.json(jsonVal);
 });
 

@@ -26,17 +26,17 @@
   {
     "surveyId": 2,
     "surveyType": "text",
-    "question": "In your opinion, how does the app generate the predictions for period days, ovulation, fertile window?",
+    "question": "In your opinion, how does the app generate the predictions for period days, ovulation, fertile window?"
   },
   {
     "surveyId": 3,
     "surveyType": "text",
-    "question": "What indicators do you think this app uses to predict period days, ovulation, fertile window?",
+    "question": "What indicators do you think this app uses to predict period days, ovulation, fertile window?"
   },
   {
     "surveyId": 4,
     "surveyType": "text",
-    "question": "The app store page you analyzed mentioned Kaya offer \"personalized fertility recommendations.\" In your opinion, what does it mean?",
+    "question": "The app store page you analyzed mentioned Kaya offer \"personalized fertility recommendations.\" In your opinion, what does it mean?"
   },
   {
     "surveyId": 5,
@@ -223,5 +223,5 @@
       "Likely",
       "Very likely"
     ]
-  },
+  }
 ]
