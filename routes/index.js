@@ -77,12 +77,7 @@ router.get('/consent1', function(req, res, next) {
 
 //this is creating users after count user’s number
 router.get('/consent2', async (req, res, next) => {
-  var realUser = new Usercode();
-
-  //checking Device
-  var device;
-  if(req.useragent.isMobile) device = 'Mobile';
-  else device = 'Desktop'
+var realUser = new Usercode();
 
   //cliend IP
   const ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
@@ -132,7 +127,7 @@ router.get('/consent2', async (req, res, next) => {
   realUser.UserCode = user;
   realUser.UserType = type;
   realUser.IPaddress = ip;
-  realUser.Enviroment = deveice;
+
   // save
   await realUser.save().catch(err => {
     console.error(err);
@@ -142,8 +137,8 @@ router.get('/consent2', async (req, res, next) => {
   return res.json({
     "usercode": user,
     "usertype": type,
-    "IPaddress": ip,
-    "enviroment": device
+    "IPaddress": ip
+
   });
 });
 
