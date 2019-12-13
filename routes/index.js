@@ -101,13 +101,16 @@ router.get('/consent2', function(req, res, next){
   var user = resultCode;
   var type = '';
 
-  var aNum = usercode.find({UserCode: 'AB'}.count(), function(err, user){
+
+  // count user (type is 'AB' or 'BA')
+
+  var aNum = Usercode.find({UserType: 'AB'}.count(), function(err, user){
     if(err) console.log(error);
     else {
       if(user == [] || user == null || user == undefined || user == {} || user == '[]') aNum = 0;}
     });
 
-  var bNum = usercode.find({UserCode: 'BA'}.count(), function(err, user){
+  var bNum = Usercode.find({UserType: 'BA'}.count(), function(err, user){
     if(err) console.log(error);
     else {
       if(user == [] || user == null || user == undefined || user == {} || user == '[]')bNum = 0;}
