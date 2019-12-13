@@ -10,6 +10,8 @@ var cors = require('cors');
 var bodyParser = require('body-parser');
 var morgan = require('morgan');
 //userAgent ( ip, browser, checking mobile or pc)
+var device = require('express-device');
+
 var useragent = require('express-useragent');
 var fs = require('fs');
 
@@ -40,7 +42,7 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-
+app.use(device.capture());
 //[MONGO CONNECTION]
 
 //We have to change this part to your information
