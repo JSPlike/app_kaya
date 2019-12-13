@@ -21,6 +21,10 @@ router.get('/consent1', function(req, res, next) {
   var temp_1 = '';
   var temp_2 = '';
 
+  // getting client ip
+  const ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+
+  console.log(ip);
   // char length = 4
   for(var i = 0; i < 4; i++) {
     //Math.random => 0~1 random float num
