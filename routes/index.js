@@ -71,6 +71,22 @@ router.get('/consent1', function(req, res, next) {
   });
 });
 
+// count user (type is 'AB' or 'BA')
+function aNum(){
+  Usercode.countDocuments({UserType: 'AB'}, function(err, count){
+    if(err) console.log(error);
+  });
+  return count;
+}
+
+function bNum(){
+  Usercode.countDocuments({UserType: 'BA'}, function(err, count){
+    if(err) console.log(error);
+
+    return count;
+  });
+}
+
 //this is creating users after count user’s number
 router.get('/consent2', function(req, res, next){
   var realUser = new Usercode();
@@ -105,21 +121,8 @@ router.get('/consent2', function(req, res, next){
   var user = resultCode;
   var type = '';
 
-  // count user (type is 'AB' or 'BA')
-  var a = function aNum(){
-    Usercode.countDocuments({UserType: 'AB'}, function(err, count){
-      if(err) console.log(error);
-    });
-    return count;
-  };
-
-  var b = function bNum(){
-    Usercode.countDocuments({UserType: 'BA'}, function(err, count){
-      if(err) console.log(error);
-
-      return count;
-    });
-  };
+  var a = aNum();
+  var b = bNum();
 
   console.log(a);
   console.log(typeof(b));
