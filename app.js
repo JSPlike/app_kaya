@@ -9,6 +9,8 @@ var app = express();
 var cors = require('cors');
 var bodyParser = require('body-parser');
 var morgan = require('morgan');
+//userAgent ( ip, browser, checking mobile or pc)
+var useragent = require('express-useragent');
 var fs = require('fs');
 
 
@@ -26,12 +28,11 @@ var users = require('./routes/users');
 var inputs = require('./routes/input/inputs');
 var survey = require('./routes/survey/survey');
 
+//mongodb framwork
 var mongoose = require('mongoose');
 
 //models
-
-
-
+app.use(useragent.express());
 app.use(morgan('short'));
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));

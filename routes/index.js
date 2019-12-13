@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-
+var useragent = require('express-useragent');
 var mongoose = require('mongoose');
 var Usercode = require('../models/user_code');
 
@@ -9,7 +9,12 @@ var Usercode = require('../models/user_code');
 
 //this is creating random users
 router.get('/consent1', function(req, res, next) {
+  //checking moblie or desktop
+  var chkPhone;
 
+  if(req.useragent.isMobile === true) chkPhone = 'Mobile'
+  else if(req.useragent.isDesktop === true) chkPhone = 'Desktop';
+  else chkPhone = 'Bot';
 
   // You can change this part to funcion
   var random_base_char = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
@@ -64,7 +69,8 @@ router.get('/consent1', function(req, res, next) {
   return res.json({
     "usercode": user,
     "usertype": user_type,
-    "IP_Address": ip
+    "IP_Address": ip,
+    "Enviroment": chkPhone
   });
 });
 
