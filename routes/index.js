@@ -105,22 +105,23 @@ router.get('/consent2', function(req, res, next){
   var user = resultCode;
   var type = '';
   // count user (type is 'AB' or 'BA')
-  function aNum(){
+  var a = function cntType(cb){
     Usercode.countDocuments({UserType: 'AB'}, function(err, count){
-      if(err) console.log(error);
+      if(err) throw err;
+      if(count === 0) return cb(null, true);
+
+      return cb(`AB type's number is ${count}`, false);
     });
-    return count;
   }
 
-  function bNum(){
+  var b = function cntType(cb){
     Usercode.countDocuments({UserType: 'BA'}, function(err, count){
       if(err) console.log(error);
+      if(count === 0) return cb(null, true);
+
+      return cb(`BA type's number is ${count}`, false);
     });
-    return count;
   }
-  
-  var a = aNum();
-  var b = bNum();
 
   console.log(a);
   console.log(typeof(b));
@@ -144,7 +145,6 @@ router.get('/consent2', function(req, res, next){
 
   return res.json({
     "usercode": user,
-    "usertype": type,
     "IPaddress": ip
   });
 });
