@@ -113,7 +113,7 @@ router.get('/consent2', function(req, res, next){
   var b = bNum;
   console.log(a);
   console.log(b);
-  
+
   if(a <= b){
     type = 'AB';
     realUser.UserCode = user;
@@ -130,8 +130,7 @@ router.get('/consent2', function(req, res, next){
   });
 
   return res.json({
-    "usercode": user,
-    "usertype": type
+    "usercode": user
   });
 });
 
