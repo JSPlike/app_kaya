@@ -109,24 +109,19 @@ router.get('/consent2', async (req, res, next) => {
   const baCount = await Usercode.countDocuments({UserType: 'BA'})
                   .catch(err => { throw err });
 
-
-
-
-
   console.log(abCount);
   console.log(baCount);
-                  
+
   const type = abCount <= baCount ? 'AB' : 'BA';
 
   realUser.UserCode = user;
   realUser.UserType = type;
   realUser.IPaddress = ip;
 
-  realUser.save(function(err, code){
-    if(err) return console.error(err);
+  await realUser.save().catch(err => {
+    console.error(err);
+    throw err;
   });
-
-
 
   return res.json({
     "usercode": user,
