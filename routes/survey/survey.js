@@ -5,11 +5,11 @@ var fs = require('fs');
 router.get('/requestSurvey/control', function(req, res, next){
 
   var rawdata = fs.readFileSync('../../data/survey_experiment.json');
-  let control_survey = JSON.stringify(rawdata);
+  let controlJson = JSON.stringify(rawdata);
 
-  return res.json({
-    control_survey
-  })
+  res.writeHead(200,{ "Content-Type": "application/json;characterset=utf-8" });
+  res.write(controlJson);
+  res.end();
 });
 
 
