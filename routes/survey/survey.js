@@ -4,18 +4,13 @@ var fs = require('fs');
 
 router.get('/requestSurvey/control', function(req, res, next){
 
-  var control_survey = fs.readFileSync('../../data/survey_experiment', "utf8");
+  var rawdata = fs.readFileSync('../../data/survey_experiment.json');
+  let control_survey = JSON.stringify(rawdata);
 
   return res.json({
     control_survey
   })
 });
-
-
-
-
-
-
 
 
 // common survey
