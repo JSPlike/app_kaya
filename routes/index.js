@@ -114,6 +114,7 @@ router.get('/consent2', function(req, res, next){
       if(user == [] || user == null || user == undefined || user == {} || user == '[]') aNum = 0;}
 
     console.log(count);
+    return count;
     });
 
   var bNum = Usercode.countDocuments({ UserType: 'BA' }, function(err, count){
@@ -122,6 +123,7 @@ router.get('/consent2', function(req, res, next){
       if(user == [] || user == null || user == undefined || user == {} || user == '[]')bNum = 0;}
 
     console.log(count);
+    return count;
   });
 
   var a = aNum;
