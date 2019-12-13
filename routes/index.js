@@ -109,8 +109,8 @@ router.get('/consent2', async (req, res, next) => {
   const baCount = await Usercode.countDocuments({UserType: 'BA'})
                   .catch(err => { throw err });
 
-  console.log(abCount);
-  console.log(baCount);
+  console.log("AB Count:", abCount);
+  console.log("BA Count:", baCount);
 
   const type = abCount <= baCount ? 'AB' : 'BA';
 
