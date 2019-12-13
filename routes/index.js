@@ -3,8 +3,7 @@ var router = express.Router();
 
 var mongoose = require('mongoose');
 var Usercode = require('../models/user_code');
-var ran = require('../lib/randomUser');
-var typeNum = require('../lib/typeNum');
+
 
 /* GET home page. */
 
