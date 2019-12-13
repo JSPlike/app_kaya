@@ -3,12 +3,11 @@ var router = express.Router();
 
 var fs = require('fs');
 
+const controlSurveyJson = require('../../data/survey_experiment.json');
+
 router.get('/requestSurvey/control', function(req, res, next){
 
-  fs.readFile(__dirname + "../../data/survey_experiment.json", 'utf8', function(err, data){
-    var jsonVal = JSON.parse(data);
-    res.json(jsonVal);
-  });
+  res.json(controlSurveyJson);
 });
 
 
