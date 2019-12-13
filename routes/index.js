@@ -13,8 +13,9 @@ var Usercode = require('../models/user_code');
 //this is creating random users
 router.get('/consent1', function(req, res, next) {
   //checking moblie or desktop
-  var device = req.device.type;
-
+  var device;
+  if(req.useragent.isMobile) device = 'Mobile';
+  else device = 'Desktop'
   // You can change this part to funcion
   var random_base_char = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
   var random_base_num = "0123456789";
