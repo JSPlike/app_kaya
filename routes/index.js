@@ -8,9 +8,13 @@ var typeNum = require('../lib/typeNum');
 
 /* GET home page. */
 
+
+
 //this is creating random users
 router.get('/consent1', function(req, res, next) {
 
+
+  // You can change this part to funcion
   var random_base_char = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
   var random_base_num = "0123456789";
 
@@ -30,6 +34,7 @@ router.get('/consent1', function(req, res, next) {
     temp_2 += random_base_num.substring(m, m + 1);
   }
 
+  // creating usercode
   var resultCode = temp_1.concat(temp_2);
 
   var user = resultCode;
@@ -63,12 +68,49 @@ router.get('/consent1', function(req, res, next) {
 //this is creating users after count user’s number
 router.get('/consent2', function(req, res, next){
   var realUser = new Usercode();
-  var a = typeNum.ANum;
-  var b = typeNum.BNum;
 
   //creating userid
-  var user = ran.random_user();
-  var type;
+
+  // You can change this part to funcion
+  var random_base_char = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+  var random_base_num = "0123456789";
+
+  var temp_1 = '';
+  var temp_2 = '';
+
+  // char length = 4
+  for(var i = 0; i < 4; i++) {
+    //Math.random => 0~1 random float num
+    var n = Math.floor(Math.random() * random_base_char.length);
+    temp_1 += random_base_char.substring(n, n + 1);
+  }
+
+  // num length = 5
+  for(var j = 0; j < 5; j++){
+    var m = Math.floor(Math.random() * random_base_num.length);
+    temp_2 += random_base_num.substring(m, m + 1);
+  }
+
+  // creating usercode
+  var resultCode = temp_1.concat(temp_2);
+
+  var user = resultCode;
+  var type = '';
+
+  var aNum = usercode.find({UserCode: 'AB'}.count(), function(err, user){
+    if(err) console.log(error);
+    else {
+      if(user == [] || user == null || user == undefined || user == {} || user == '[]') aNum = 0;}
+    });
+
+  var bNum = usercode.find({UserCode: 'BA'}.count(), function(err, user){
+    if(err) console.log(error);
+    else {
+      if(user == [] || user == null || user == undefined || user == {} || user == '[]')bNum = 0;}
+  });
+  
+  var a = aNum;
+  var b = bNum;
 
   if(a <= b){
     type = 'AB';
