@@ -108,22 +108,21 @@ router.get('/consent2', function(req, res, next){
 
   // count user (type is 'AB' or 'BA')
 
-  var aNum = Usercode.countDocuments({ UserType: 'AB' }, function(err, count){
+Usercode.countDocuments({ UserType: 'AB' }, function(err, count){
     if(err) console.log(error);
     else {
       if(user == [] || user == null || user == undefined || user == {} || user == '[]') aNum = 0;}
 
     console.log(count);
-    return count;
+      var aNum = count;
     });
-
-  var bNum = Usercode.countDocuments({ UserType: 'BA' }, function(err, count){
+Usercode.countDocuments({ UserType: 'BA' }, function(err, count){
     if(err) console.log(error);
     else {
       if(user == [] || user == null || user == undefined || user == {} || user == '[]')bNum = 0;}
 
     console.log(count);
-    return count;
+    var bNum = count;
   });
 
   var a = aNum;
