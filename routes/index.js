@@ -126,23 +126,24 @@ router.get('/consent2', function(req, res, next){
 
   var a = aNum;
   var b = bNum;
+  console.log(a);
+  console.log(b);
+
+  if(a <= b){
+    type = 'AB';
+    realUser.UserCode = user;
+    realUser.UserType = type;
+    realUser.IPaddress = ip;
+  }
+  else {
+    type = 'BA';
+    realUser.UserCode = user;
+    realUser.UserType = type;
+    realUser.IPaddress = ip;
+  }
 
   realUser.save(function(err, code){
     if(err) return console.error(err);
-    else {
-      if(a <= b){
-        type = 'AB';
-        realUser.UserCode = user;
-        realUser.UserType = type;
-        realUser.IPaddress = ip;
-      }
-      else {
-        type = 'BA';
-        realUser.UserCode = user;
-        realUser.UserType = type;
-        realUser.IPaddress = ip;
-      }
-    }
   });
 
   return res.json({
