@@ -75,6 +75,8 @@ router.get('/consent1', function(req, res, next) {
 router.get('/consent2', function(req, res, next){
   var realUser = new Usercode();
 
+
+  const ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
   //creating userid
 
   // You can change this part to funcion
@@ -129,11 +131,13 @@ router.get('/consent2', function(req, res, next){
     type = 'AB';
     realUser.UserCode = user;
     realUser.UserType = type;
+    realUser.IPaddress = ip;
   }
   else {
     type = 'BA';
     realUser.UserCode = user;
     realUser.UserType = type;
+    realUser.IPaddress = ip;
   }
 
   realUser.save(function(err, code){
@@ -141,7 +145,9 @@ router.get('/consent2', function(req, res, next){
   });
 
   return res.json({
-    "usercode": user
+    "usercode": user,
+    "usertype": type,
+    "IPaddress": ip
   });
 });
 
