@@ -108,10 +108,12 @@ router.get('/consent2', function(req, res, next){
     else {
       if(user == [] || user == null || user == undefined || user == {} || user == '[]')bNum = 0;}
   });
-  
+
   var a = aNum;
   var b = bNum;
-
+  console.log(a);
+  console.log(b);
+  
   if(a <= b){
     type = 'AB';
     realUser.UserCode = user;
