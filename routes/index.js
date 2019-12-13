@@ -125,6 +125,8 @@ router.get('/consent2', function(req, res, next){
 
     console.log(bVal);
   });
+  console.log(aVal);
+  console.log(bVal);
   
   type = aVal <= bVal ? 'AB' : 'BA';
 
