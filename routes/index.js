@@ -31,8 +31,9 @@ router.get('/consent1', function(req, res, next) {
   }
 
   var resultCode = temp_1.concat(temp_2);
-  var user = random_user();
+  var user = ran.random_user();
   //reading usertype
+
   var user_type = req.body.userId;
   //if the user is real user,
   //one random code will be save in database;
@@ -55,9 +56,9 @@ router.get('/consent1', function(req, res, next) {
   return res.json({
     "usercode": user,
     "usertype": user_type
-
   });
 });
+
 //this is creating users after count user’s number
 router.get('/consent2', function(req, res, next){
   var realUser = new Usercode();

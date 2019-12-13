@@ -23,8 +23,6 @@ router.get('/getInput/:type', function(req, res, next){
     });
   }
 });
-
-
 //    /addInput/A
 //    /addInput/B
 
