@@ -106,41 +106,26 @@ router.get('/consent2', function(req, res, next){
   var type = '';
   // count user (type is 'AB' or 'BA')
 
-  var aVal;
-  var bVal;
-  aVal = Usercode.countDocuments({UserType: 'AB'}, function(err, count){
+  Usercode.countDocuments({UserType: 'AB'}, function(err, acnt){
     if(err) throw err;
+    if(acnt === 0) acnt = 0;
 
-    if(count === 0) aVal = 0;
-    else aVal = count;
+    Usercode.countDocuments({UserType: 'BA'}, function(err, bcnt){
+      if(err) throw err;
+      if(bcnt === 0) bcnt = 0;
 
-    console.log(aVal);
+      type = acnt <= bcnt ? 'AB' : 'BA';
 
-    return aVal;
+      realUser.UserCode = user;
+      realUser.UserType = type;
+      realUser.IPaddress = ip;
+
+      realUser.save(function(err, code){
+        if(err) return console.error(err);
+      });
+    });
   });
 
-  bVal = Usercode.countDocuments({UserType: 'BA'}, function(err, count){
-    if(err) throw err;
-
-    if(count === 0) bVal = 0;
-    else bVal = count;
-
-    console.log(bVal);
-    return bVal;
-  });
-  console.log(aVal);
-  console.log(bVal);
-
-  type = aVal <= bVal ? 'AB' : 'BA';
-
-  realUser.UserCode = user;
-  realUser.UserType = type;
-  realUser.IPaddress = ip;
-
-
-  realUser.save(function(err, code){
-    if(err) return console.error(err);
-  });
 
   return res.json({
     "usercode": user,
