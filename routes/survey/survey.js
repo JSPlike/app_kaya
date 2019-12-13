@@ -5,12 +5,10 @@ var fs = require('fs');
 
 router.get('/requestSurvey/control', function(req, res, next){
 
-  const result = {success: true}
-  const path = '../../data/survey_experiment.json';
-  const jsonVal = fs.readFileSync(path);
-  jsonVal = JSON.stringify(jsonVal);
-  
-  return res.json(jsonVal);
+  fs.readFile(__dirname + "../../data/" + "survey_experiment.json", 'utf8', function(err, data){
+    var jsonVal = JSON.parse(data)
+    res.json(jsonVal);
+  });
 });
 
 
