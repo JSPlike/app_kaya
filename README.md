@@ -54,7 +54,7 @@ hosting server
 
 
 
-dependencies:
+### dependencies:
 
 "body-parser": "~1.18.2",
  "cookie-parser": "~1.4.3",
@@ -66,9 +66,6 @@ dependencies:
  "morgan": "^1.9.1",
  "nodemon": “^1.19.4”
 "serve-favicon": "~2.4.5"
-
-
-
 
 
 Creating Random User Code:
@@ -93,20 +90,19 @@ const ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
 
 ### Getting User device:
 
-//checking Device
+```
+	//checking Device
+	var useragent = require(‘express-useragent’);
 
-var useragent = require(‘express-useragent’);
-
-var device;
-if(req.useragent.isMobile) device = 'Mobile';
-else device = 'Desktop'
-
+	var device;
+	if(req.useragent.isMobile) device = 'Mobile';
+	else device = 'Desktop'
+```
 ### Starting:
 
 Start automatically when you send a request to that url
 
 - RESTful API
-
 
 ### Database schema(mongoose)
 
