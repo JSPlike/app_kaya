@@ -55,18 +55,18 @@ hosting server
 
 
 ### dependencies:
-
-"body-parser": "~1.18.2",
- "cookie-parser": "~1.4.3",
- "cors": "^2.8.5",
- "debug": "~2.6.9",
- "express": "^4.17.1",
- "jade": "~1.11.0",
- "mongoose": "^5.7.7",
- "morgan": "^1.9.1",
- "nodemon": “^1.19.4”
-"serve-favicon": "~2.4.5"
-
+```
+	"body-parser": "~1.18.2",
+	 "cookie-parser": "~1.4.3",
+	 "cors": "^2.8.5",
+	 "debug": "~2.6.9",
+	 "express": "^4.17.1",
+	 "jade": "~1.11.0",
+	 "mongoose": "^5.7.7",
+	 "morgan": "^1.9.1",
+	 "nodemon": “^1.19.4”
+	"serve-favicon": "~2.4.5"
+```
 
 Creating Random User Code:
 							
