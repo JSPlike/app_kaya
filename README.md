@@ -30,14 +30,14 @@ GET /api/requestSurvey/control
 GET /api/requestSurvey/experiment
 
 
-> //common api
-> POST /api/addSurvey/common
-> //typeA
-> POST /api/addSurvey/control
-> //typeB
-> POST /api/addSurvey/experiment
-> //final
-> POST /api/addSurvey/final
+> - //common api
+> - POST /api/addSurvey/common
+> - //typeA
+> - POST /api/addSurvey/control
+> - //typeB
+> - POST /api/addSurvey/experiment
+> - //final
+> - POST /api/addSurvey/final
 
 using:
 
