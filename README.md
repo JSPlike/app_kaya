@@ -1,12 +1,10 @@
 # app_kaya
-
- Backend part 
-
-
-RESTapi:
+# Backend part 
 
 
--main:
+## RESTapi:
+
+### -main:
 
 GET /api/concent1
 this is creating random users
@@ -17,16 +15,16 @@ this is creating users after count user’s number
 GET /api/reject
 this will send ‘goodbye’ message 
 
--input:
+### -input:
 
 GET /api/getInput/:type
 
 //send data to database
 POST /api/addInput/:type
 
--survey:
+### -survey:
 
-// send jsonfile to frontend
+//send jsonfile to frontend
 
 GET /api/requestSurvey/control
 GET /api/requestSurvey/experiment
@@ -74,30 +72,26 @@ dependencies:
 
 
 Creating Random User Code:
-
-
-
-
-
 							
-Counting usertype:
+### Counting usertype:
+```
+	const abCount = await Usercode.countDocuments({UserType: 'AB'})
+			  .catch(err => { throw err });
 
-const abCount = await Usercode.countDocuments({UserType: 'AB'})
-                  .catch(err => { throw err });
+	  const baCount = await Usercode.countDocuments({UserType: 'BA'})
+			  .catch(err => { throw err });
 
-  const baCount = await Usercode.countDocuments({UserType: 'BA'})
-                  .catch(err => { throw err });
+	  console.log("AB Count:", abCount);
+	  console.log("BA Count:", baCount);
 
-  console.log("AB Count:", abCount);
-  console.log("BA Count:", baCount);
+	  const type = abCount <= baCount ? 'AB' : 'BA';
+```
 
-  const type = abCount <= baCount ? 'AB' : 'BA';
-
-Getting User IP:
+### Getting User IP:
 
 const ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
 
-Getting User device:
+### Getting User device:
 
 //checking Device
 
@@ -107,15 +101,14 @@ var device;
 if(req.useragent.isMobile) device = 'Mobile';
 else device = 'Desktop'
 
-Starting:
+### Starting:
 
 Start automatically when you send a request to that url
 
 - RESTful API
 
 
-Database schema(mongoose)
-
+### Database schema(mongoose)
 
 user(user_code)
 UserCode // random access code
@@ -123,25 +116,27 @@ UserType // AB first or BA first
 IPaddress // client IP address
 Enviroment // detect Mobile or Desktop
 
-input(input_code)
-CheckCode: {type: String, ref: 'user_code'}, //usercode
-OPKTest: Number,
-Flow: Number,
-Sex: String,
-Temperature: Number,
-Cervical_mucus: String,
-Symptoms: String,
-Moods: String,
-Click_Time: { type: Date, default: Date.now  } //clicktime
-survey(survey_code)
+```
+	input(input_code)
+	CheckCode: {type: String, ref: 'user_code'}, //usercode
+	OPKTest: Number,
+	Flow: Number,
+	Sex: String,
+	Temperature: Number,
+	Cervical_mucus: String,
+	Symptoms: String,
+	Moods: String,
+	Click_Time: { type: Date, default: Date.now  } //clicktime
+	survey(survey_code)
 
-CheckCode: {type: String, ref: 'user_code'}, //usercode
-Answer: {    //the data will be save with JSON form
-  type: String
-},
-Click_Time: { type: Date, default: Date.now  } //clicktime
-	
-Reference:
+	CheckCode: {type: String, ref: 'user_code'}, //usercode
+	Answer: {    //the data will be save with JSON form
+	  type: String
+	},
+	Click_Time: { type: Date, default: Date.now  } //clicktime
+```
+
+### Reference:
 
 -mongoose
 https://mongoosejs.com/docs/guide.html
