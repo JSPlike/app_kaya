@@ -14,7 +14,7 @@
     "express-device": "^0.4.2",
     "express-useragent": "^1.0.13",
     "jade": "~1.11.0",
-    "mongoose": "^5.7.7",
+    "mongoose": "^5.13.20",
     "morgan": "^1.9.1",
     "nodemon": "^1.19.4",
     "serve-favicon": "~2.4.5"
